@@ -1,0 +1,47 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+
+    <div id="app">
+        <button v-on:click="aumentar">Aumentar</button>
+        <button v-on:click="contador2++">Aumentar 2</button>
+        <button v-on:click="diminuir">Diminuir</button>
+        <p> {{ contador }} || {{ contador2 }}</p>
+        <p> {{  resultado }}</p>
+    </div>
+
+
+    <script>
+        new Vue({
+            el:"#app",
+            data: {
+                contador: 0,
+                contador2: 0
+            },
+
+            watch:{
+                contador(antigo, novo){
+                    setTimeout(() => {
+                        this.contador = 0
+                    }, 2000)
+                }
+            },
+
+            computed: {
+                resultado(){
+                    return this.contador >= 5 ? 
+                    "Maior igual a 5" : "Inferior igual a 5"
+                }
+            },
+
+            methods: {
+                aumentar(){
+                    this.contador ++
+                },
+
+                diminuir(){
+                    this.contador --
+                },
+
+            }
+
+        })
+    </script>
